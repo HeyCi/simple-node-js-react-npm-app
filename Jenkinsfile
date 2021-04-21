@@ -19,11 +19,22 @@ pipeline {
                 sh 'echo "test qui marche pas non plus"'
             }
         }
+        stage('run-parallele') {
+          steps {
+            parallel(
+              a: {
+                echo "ceci est en parallele version a"
+              },
+              b: {
+                echo "ceci est en parallele version b"
+              }
+            )
+          }
+        }
         stage('Deliver') { 
             steps {
                 sh 'echo "delivery idem"'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
+                input message: 'Finir cette présentation ? (Click "Proceed" to continue)'
             }
         }
     }
