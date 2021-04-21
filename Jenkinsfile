@@ -24,8 +24,8 @@ pipeline {
             parallel(
               a: {
                 echo "ceci est en parallele version a"
-                echo "test de fail qui bloque pas :"
-                 sh 'npm install'
+                //echo "test de fail qui bloque pas b :"
+                //sh 'npm install'
               },
               b: {
                 echo "ceci est en parallele version b"
